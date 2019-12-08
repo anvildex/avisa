@@ -1,0 +1,61 @@
+.page-cover {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: $base-spacing*30;
+    padding: $base-spacing*8 0;
+    background-color: $color-dark;
+    @include screen(sm) {
+        height: $base-spacing*25;
+    }
+    &.is-home {
+        .background {
+            opacity: .7;
+        }
+    }
+    &.is-page {
+        height: $base-spacing*20;
+        .background {
+            opacity: 1;
+        }
+    }
+    &.is-post {
+        height: $base-spacing*40;
+        .background {
+            opacity: 1;
+        } 
+    }
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-position: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .content {
+        opacity: 1;
+        position: relative;
+        z-index: 2;
+        max-width: $base-spacing*50;
+        .title {
+            font-size: $font-size-xxl*1.5;
+            line-height: $font-size-xxl*1.2;
+            text-align: center;
+            color: $color-light;
+        }
+        .description {
+            display: block;
+            padding: 0 $base-spacing*2;
+            font-size: $font-size-xl;
+            line-height: $font-size-xl*1.2;
+            text-align: center;
+            color: $color-light;
+        }
+    }
+}

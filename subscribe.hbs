@@ -1,0 +1,37 @@
+{{!< default}}
+{{!------------------------------------------------
+# THIS TEMPLATE USING TO RENDER USER SUBSCRIBE PAGE
+--------------------------------------------------}}
+
+{{!-- Container width --}}
+{{#contentFor "container"}}container{{/contentFor}}
+
+{{!-- Insert header | partials/header.hbs --}}
+{{> header}}
+
+{{!-- Insert page cover | partials/page-cover.hbs --}}
+{{> page-cover background=@site.cover_image}}
+
+{{!-- Insert page header | page-header/header.hbs --}}
+{{> page-header}}
+
+<div class="{{{block "container"}}} main-wrap">
+    <div class="row">
+        <div class="col content-area">
+            <div class="content-wrap">
+                {{!-- If member paid logged in > Redirect to account page --}}
+                {{#if @member.paid}}
+                <script>window.location = '{{@site.url}}/account';</script>
+
+                {{!-- If guest or free member logged in > Show subscribe plan --}}
+                {{else}}
+
+                {{!-- Insert subscribe plan | partials/plan.hbs --}}
+                {{> plan}}
+
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+

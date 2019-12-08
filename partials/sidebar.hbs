@@ -1,0 +1,39 @@
+{{!-- Widget Feature --}}
+{{#get "posts" limit="3" filter="featured:true"}}
+<aside class="widget">
+    <h5 class="title">{{t "Featured"}}</h5>
+    <ul class="details featured-posts">
+        {{#foreach posts visibility="all"}}
+        <li class="item">
+            {{#if feature_image}}
+            <div class="media">
+                <a href="{{url}}"><img class="feature_image" src="{{img_url feature_image}}" alt="{{title}}"></a>
+            </div>
+            {{/if}}
+            <div class="content">
+                <span class="sup">{{date format="DD MMMM, YYYY"}}</span>
+                <h4 class="name"><a href="{{url}}">{{title}}</a></h4>
+            </div>
+        </li>
+        {{/foreach}}
+    </ul>
+</aside>
+{{/get}}
+
+{{!-- Widget Popular Tags --}}
+{{#get "tags" limit="6" include="count.posts" order="count.posts desc"}}
+<aside class="widget sticky">
+    <h5 class="title">{{t "Popular Tags"}}</h5>
+    <ul class="details popular-tags">
+        {{#foreach tags}}
+        <li class="item">
+            <a class="name" href="{{url}}">{{name}}</a>
+            <span class="sup">{{count.posts}}</span>
+        </li>
+        {{/foreach}}
+    </ul>
+</aside>
+{{/get}}
+
+{{!-- Custom widget | partials/widget.hbs --}}
+{{> widget}}

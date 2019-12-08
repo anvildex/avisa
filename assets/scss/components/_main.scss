@@ -1,0 +1,82 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main {
+    &-area {
+        flex-grow: 1;
+        &.with-cover {
+            margin-top: $base-spacing*4;
+        }
+        &.with-page-header {
+            margin-top: $base-spacing*2;
+        }
+        &.no-cover {
+            margin-top: $base-spacing*8;
+        }
+    }
+    &-wrap {
+        &.full-width {
+            max-width: 100%;
+            overflow-x: hidden;
+            .content-area {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+.content {
+    &-area {}
+    &-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        @include screen(sm, md) {
+            flex-direction: column !important;
+        }
+        &.grid-2, &.grid-3, .grid-3x3, &.signup {
+            flex-direction: row;
+            margin-left: -$base-spacing;
+            margin-right: -$base-spacing;
+        }
+    }
+}
+.sidebar {
+    &-area {}
+    &-wrap {}
+}
+.pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: $base-spacing*2;
+    .page-number {
+        padding: 0 $base-spacing;
+        line-height: $base-spacing*2;
+    }
+    .prev, .next {
+        svg {
+            fill: $color-faded;
+        }
+        a {
+            display: inline-block;
+            width: $base-spacing*2;
+            height: $base-spacing*2;
+            line-height: $base-spacing*2;
+            text-align: center;
+            background-color: $background-secondary;
+            border: 1px solid $color-border;
+            transition: all .3s;
+            &:hover {
+                color: $color-light;
+                background-color: $background-tertiary;
+                border-color: $background-tertiary;
+                svg {
+                    fill: $color-light;
+                }
+            }
+        }
+    }
+}

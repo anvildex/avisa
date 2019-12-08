@@ -1,0 +1,31 @@
+/*! Avisa stylesheet */
+body {
+    position: relative;
+    right: 0;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    color: $color-primary;
+    background-color: $background-primary;
+    transition: right .2s ease-in-out;
+}
+a {
+    color: $color-secondary;
+    &:hover {
+        text-decoration: none;
+        color: $color-tertiary;
+    }
+}
+#{h(1,6)} {
+    width: 100%;
+    color: $color-secondary;
+    font-weight: $font-weight-medium !important;
+}
+p {
+    width: 100%;
+}
+img {
+    width: 100%;
+}
+b, strong {
+    font-weight: $font-weight-bold;
+}

@@ -1,0 +1,12 @@
+routes:
+  /subscribe/: subscribe
+  /account/: account
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: grid3
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

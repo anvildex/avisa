@@ -1,0 +1,172 @@
+.post-card {
+    margin-bottom: $base-spacing*2;
+    @include screen(sm, md) {
+        flex: 100% !important;
+        max-width: 100% !important;
+    }
+    &.members-access .card-body {
+        border-color: $members-access;
+    }
+    &.paid-access .card-body {
+        border-color: $paid-access;
+    }
+    &.first {
+        flex: 100% !important;
+        max-width: 100% !important;
+        .card-media, .feature_image {
+            height: $base-spacing*25;
+            @include screen(sm) {
+                height: $base-spacing*16;
+            }
+        }
+        .card-body {
+            height: auto;
+        }
+    }
+}
+.grid-2 {
+    .post-card {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+.grid-3, .grid-3x3 {
+    .post-card {
+        flex: 33.3333%;
+        max-width: 33.3333%;
+        .card-media {
+            height: $base-spacing*12;
+            .feature_image {
+                height: $base-spacing*12;
+            }
+        }
+    }
+}
+.card {
+    &-wrap {
+        position: relative;
+        overflow: hidden;
+        margin: 0 $base-spacing;
+        background-color: $background-secondary;
+        box-shadow: $shadow-primary;
+    }
+    &-ribbon {
+        position: absolute;
+        top: -10px;
+        right: -25px;
+        z-index: 10;
+        width: $base-spacing*4;
+        height: $base-spacing*2;
+        color: $color-light;
+        background-color: $background-tertiary;
+        transform: rotate(45deg);
+        .featured {
+            display: block;
+            padding-top: 12px;
+            text-align: center;
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: $color-light;
+            }
+        }
+    }
+    &-media {
+        height: $base-spacing*16;
+        overflow: hidden;
+        background-color: $background-tertiary;
+        .feature_image {
+            height: $base-spacing*16;
+            object-fit: cover;
+            @include zoom-in;
+        }
+    }
+    &-body {
+        position: relative;
+        height: $base-spacing*12;
+        overflow: hidden;
+        padding: $base-spacing;
+        border-top: $base-spacing/3 solid $public-access;
+        &:after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: $base-spacing*2;
+            background-color: $background-secondary;
+        }
+        .sup {
+            display: flex;
+            .primary_tag {
+                margin-right: $base-spacing;
+                line-height: $base-spacing*1.6;
+                color: $color-tertiary;
+            }
+            .published_at {
+                line-height: $base-spacing*1.6;
+                color: $color-faded;
+            }
+        }
+        .title {
+            font-size: $font-size-l;
+            line-height: $font-size-l*1.1;
+        }
+        .details {
+            line-height: $font-size-l;
+        }
+    }
+    &-meta {
+        display: flex;
+        justify-content: space-between;
+        height: $base-spacing*4;
+        overflow: hidden;
+        padding: $base-spacing;
+        border-top: 1px solid $color-border;
+        .author {
+            flex: 1;
+            position: relative;
+            @include h-list;
+            li {
+                position: absolute;
+                z-index: 10;
+            }
+            &-image {
+                .profile_image {
+                    width: $base-spacing*2;
+                    height: $base-spacing*2;
+                    border-radius: 100%;
+                    object-fit: cover;
+                }
+                &:nth-child(2) {
+                    z-index: 9;
+                    left: $base-spacing/3;
+                }
+                &:nth-child(3) {
+                    z-index: 8;
+                    left: $base-spacing/2;
+                }
+            }
+            &-name {
+                left: $base-spacing*2.5;
+                line-height: $base-spacing*2;
+                font-size: $font-size-s;
+                a {
+                    color: inherit;
+                    &:hover {
+                        color: $color-tertiary;
+                    }
+                }
+            }
+        }
+        .pernament-link {
+            line-height: $base-spacing*2;
+            text-transform: uppercase;
+            color: $color-primary;
+            &:hover {
+                color: $color-tertiary;
+            }
+        }
+    }
+}

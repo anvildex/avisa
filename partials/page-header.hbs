@@ -1,0 +1,120 @@
+{{!-- Hide for home page --}}
+{{#is "index, home"}}
+<main class="main-area {{#if @site.cover_image}}with-cover{{else}}no-cover{{/if}}">
+{{/is}}
+
+{{!-- Tag page header --}}
+{{#is "tag"}}
+<section class="page-header is-tag {{#if feature_image}}with-cover{{else}}no-cover{{/if}}">
+    <div class="{{{block "container"}}}">
+        <span class="sup">{{t "Tag"}}</span>
+        <h2 class="title">{{name}}</h2>
+        <div class="details">
+            <div class="content">
+                <p class="description">{{#if description}}{{description}}{{else}}{{t "Currently not have description for this tag"}}{{/if}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<main class="main-area with-page-header">
+
+{{/is}}
+
+{{!-- Author page header --}}
+{{#is "author"}}
+<section class="page-header is-author {{#if cover_image}}with-cover{{else}}no-cover{{/if}}">
+    <div class="{{{block "container"}}}">
+        <span class="sup">{{t "Author"}}</span>
+        <h2 class="title">{{name}}</h2>
+        <div class="details">
+            <div class="media">
+                <img class="profile_image" src="{{#if profile_image}}{{profile_image}}{{else}}{{asset "images/no-avatar.png"}}{{/if}}" alt="{{name}}'s picture">
+            </div>
+            <div class="content">
+                <p class="description bio">{{#if bio}}{{bio}}{{else}}{{t "Currently not have author's bio"}}{{/if}}</p>
+                <ul class="meta">
+                    {{#if location}}<li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></svg>{{location}}</li>{{/if}}
+                    {{#if website}}<li><a href="{{website}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z"></path></svg></a></li>{{/if}}
+                    {{#if facebook}}<li><a href="{{facebook_url}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a></li>{{/if}}
+                    {{#if twitter}}<li><a href="{{twitter_url}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a></li>{{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<main class="main-area with-page-header">
+{{/is}}
+
+{{!-- Single post & single page header --}}
+{{#is "post, page"}}
+<section class="page-header is-post {{#has tag="#cover"}}with-cover{{else}}no-cover{{/has}}">
+    <div class="{{{block "container"}}}">
+        {{#if primary_tag}}<span class="sup">{{#primary_tag}}<a href="{{url}}">{{name}}</a>{{/primary_tag}}</span>{{/if}}
+        <h2 class="title">{{title}}</h2>
+        <div class="details">
+            <div class="content">
+                {{#if custom_excerpt }}
+                <p class="description custom_excerpt">{{custom_excerpt}}</p>
+                {{/if}}
+                {{#is "post"}}
+                <ul class="meta">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"></path></svg>{{t "Posted by"}} <a href="{{primary_author.url}}">{{primary_author.name}}</a> {{authors autolink="true" from="2" prefix=(t ", ") separator=" , "}}</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path></svg>{{date format="DD MMMM, YYYY"}}</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path></svg>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</li>
+                </ul>
+                {{/is}}
+            </div>
+        </div>
+    </div>
+</section>
+<main class="main-area with-page-header">
+{{/is}}
+
+{{!-- Subcribe page header --}}
+{{#is "subscribe"}}
+<section class="page-header {{#if @site.cover_image}}with-cover{{else}}no-cover{{/if}}">
+    <div class="{{{block "container"}}}">
+        <h2 class="title">{{t "Subscribe"}}</h2>
+        <div class="details">
+            <div class="content">
+                <p class="description">{{t "Unlock full access to"}} {{@site.title}} {{t "and see the entire library of members-only content & updates"}}</p>
+            </div>
+        </div>
+        <p class="sub">{{t "Choose your subscription"}}</p>
+    </div>
+</section>
+<main class="main-area with-page-header">
+{{/is}}
+
+{{!-- Account page header --}}
+{{#is "account"}}
+{{#if @member}}
+<section class="page-header is-account {{#if @site.cover_image}}with-cover{{else}}no-cover{{/if}}">
+    <div class="{{{block "container"}}}">
+        {{#if @member.paid}}
+        <span class="sup paid">{{t "Paid Member"}}</span>
+        {{else}}
+        <span class="sup member">{{t "Member"}}</span>
+        {{/if}}
+        <h2 class="title">{{@member.email}}</h2>
+        <div class="details">
+            <div class="content">
+                {{#if @member.paid}}
+                <p class="description">{{t "Hi there! Your account has an active"}} {{@site.title}} {{t "with access to all areas."}}<br />{{t "You're all set, but if you need any help, get in touch with us and we'd be happy to help."}}</p>
+                {{else}}
+                <p class="description">{{t "Hi there! Your account is subscribed to free updates from"}} {{@site.title}}{{t ", but doesn't have a paid subscription to unlock full access."}}</p>
+                {{/if}}
+            </div>
+        </div>
+        {{#if @member.paid}}
+        <p class="sub">{{t "Your account details"}}</p>
+        {{else}}
+        <p class="sub">{{t "Choose your subscription"}}</p>
+        {{/if}}
+    </div>
+</section>
+<main class="main-area with-page-header">
+{{else}}
+<main class="main-area {{#if @site.cover_image}}with-cover{{else}}no-cover{{/if}}">
+{{/if}}
+{{/is}}

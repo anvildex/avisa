@@ -1,0 +1,104 @@
+.page-header {
+    &.with-cover {
+        margin-top: $base-spacing*4;
+    }
+    &.no-cover {
+        margin-top: $base-spacing*8;
+    }
+    &.is-tag, &.is-author {
+        .sup {
+            text-transform: uppercase;
+        }
+    }
+    &.is-post {
+        .sup {
+            a {
+                color: $color-tertiary;
+            }
+        }
+    }
+    &.is-account {
+        .sup.member {
+            color: $color-warning;
+        }
+        .sup.paid {
+            color: $color-success;
+        }
+    }
+    .full-width {
+        max-width: 760px;
+    }
+    .sup {
+        color: $color-faded;
+    }
+    .title {
+        font-size: $font-size-xxl;
+        line-height: $font-size-xxl;
+        margin-bottom: $base-spacing;
+    }
+    .details {
+        display: flex;
+        align-items: center;
+        padding-bottom: $base-spacing;
+        margin-bottom: $base-spacing*2;
+        border-bottom: 1px solid $color-border;
+        .media {
+            width: $base-spacing*5;
+            margin-right: $base-spacing*2;
+            .profile_image {
+                border-radius: 100%;
+                object-fit: cover;
+            }
+        }
+        .content {
+            .description {
+                font-size: $font-size-m;
+                &.custom_excerpt {
+                    font-size: $font-size-l;
+                    font-weight: $font-weight-medium;
+                }
+            }
+            .link {
+                font-weight: $font-weight-medium;
+            }
+            .meta {
+                @include h-list;
+                li {
+                    margin: 0 $base-spacing $base-spacing/3 0;
+                    font-size: $font-size-s;
+                    line-height: $font-size-s;
+                    svg {
+                        width: 14px;
+                        height: 14px;
+                        margin-right: $base-spacing/5;
+                        vertical-align: bottom;
+                        transition: fill .3s;
+                    }
+                    a {
+                        color: inherit;
+                        
+                        &:hover {
+                            color: $color-tertiary;
+                            svg {
+                                fill: $color-tertiary;
+                            }
+                        }
+                    }
+                    i {
+                        display: inline-block;
+                        width: $base-spacing;
+                        height: $base-spacing;
+                        text-align: center;
+                        margin-right: $base-spacing/3;
+                    }
+                }
+            }
+        }
+    }
+    .sub {
+        font-size: $font-size-xl;
+        line-height: $font-size-xl;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,110 @@
+.footer {
+    &-area {
+        margin-top: $base-spacing*4;
+        background-color: $background-secondary;
+        border-top: $base-spacing/3 solid $color-border;
+    }
+    &-wrap {}
+    &-widget {
+        padding-top: $base-spacing*2;
+        .widget {
+            .title {
+                padding: 0;
+                font-weight: $font-weight-regular !important;
+                border: 0;
+            }
+        }
+    }
+    &-bottom {
+        display: flex;
+        border-top: 1px solid $color-border;
+        @include screen(sm) {
+            flex-direction: column;
+        }
+        .copyright {
+            flex: 1;
+            padding: $base-spacing*2 0;
+            @include screen(sm) {
+                width: 100%;
+                text-align: center;
+            }
+            p {
+                margin: 0;
+                line-height: $base-spacing*2;
+            }
+        }
+        .meta {
+            padding: $base-spacing*2 0;
+            @include screen(sm) {
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid $color-border;
+            }
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                li {
+                    display: inline-block;
+                    margin-left: $base-spacing;
+                    font-size: $font-size-s;
+                    &:first-child {
+                        margin: 0;
+                    }
+                    svg {
+                        width: 14px;
+                        height: 14px;
+                        margin-right: $base-spacing/5;
+                        vertical-align: middle;
+                        transition: fill .3s;
+                    }
+                    a {
+                        line-height: $base-spacing*2;
+                        color: $color-primary;
+                        &:hover {
+                            color: $color-tertiary;
+                            svg {
+                                fill: $color-tertiary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.tags-list {
+    .name {
+        display: inline-block;
+        margin: 0 $base-spacing/3 $base-spacing/3 0;
+        padding: 0 $base-spacing;
+        line-height: $base-spacing*2;
+        font-weight: $font-weight-medium;
+        background-color: $color-border;
+        &:hover {
+            color: $color-light;
+            background-color: $background-tertiary;
+        }
+    }
+}
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    z-index: 999;
+    right: $base-spacing;
+    bottom: $base-spacing;
+    width: $base-spacing*2;
+    height: $base-spacing*2;
+    padding-top: $base-spacing/3;
+    text-align: center;
+    background-color: $color-faded;
+    transition: all .3s;
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: $color-light;
+    }
+    &:hover {
+        background-color: $color-tertiary;
+    }
+}

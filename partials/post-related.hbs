@@ -1,0 +1,19 @@
+<div class="post-block post-related">
+    <h5 class="title">{{t "You may also like"}}</h5>
+    <div class="grid-3x3">
+        {{!-- Show 06 related post --}}
+        {{#get "posts" limit="6" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags,authors" as |related|}}
+        {{#foreach posts visibility="all"}}
+        {{> card}}
+        {{/foreach}}
+
+        {{!-- If not have any related post > Show recent posts --}}
+        {{else}}
+        {{#get "posts" limit="6" order="published_at desc"}}
+        {{#foreach posts visibility="all"}}
+        {{> card}}
+        {{/foreach}}
+        {{/get}}
+        {{/get}}
+    </div>
+</div>

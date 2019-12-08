@@ -1,0 +1,38 @@
+{
+    "name": "avisa",
+    "description": "Clean theme for Ghost platform",
+    "version": "1.0.0",
+    "engines": {
+        "ghost-api": "v3"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "anvildex",
+        "email": "anvildex@gmail.com"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "config": {
+        "posts_per_page": 15,
+        "image_sizes": {
+            "xs": {
+                "width": 256
+            },
+            "sm": {
+                "width": 480
+            },
+            "md": {
+                "width": 640
+            },
+            "lg": {
+                "width": 1280
+            },
+            "xl": {
+                "width": 1920
+            }
+        }
+    }
+}

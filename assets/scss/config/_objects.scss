@@ -1,0 +1,32 @@
+// Headings
+@function h($from:1, $to:6) {
+    @if $from == $to {
+        @return 'h#{$from}';
+    } @else {
+        @return 'h#{$from},' + h($from+1, $to);
+    }
+}
+
+// Reset ul/ol list
+@mixin list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+// Horizontal list
+@mixin h-list {
+    @include list;
+    li {
+        display: inline-block;
+    }
+}
+
+// Images hover
+@mixin zoom-in {
+    transform: scale(1);
+    transition: .3s ease-in-out;
+    &:hover {
+        transform: scale(1.05);
+    }
+}

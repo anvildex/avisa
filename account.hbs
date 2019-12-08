@@ -1,0 +1,61 @@
+{{!< default}}
+{{!-----------------------------------------------
+# THIS TEMPLATE USING TO RENDER USER ACCOUNT PAGE
+-------------------------------------------------}}
+
+{{!-- Container width --}}
+{{#contentFor "container"}}container{{/contentFor}}
+
+{{!-- Insert header | partials/header.hbs --}}
+{{> header}}
+
+{{!-- Insert page cover | partials/page-cover.hbs --}}
+{{> page-cover background=@site.cover_image}}
+
+{{!-- Insert page header | page-header/header.hbs --}}
+{{> page-header}}
+
+<div class="{{{block "container"}}} main-wrap">
+    <div class="row">
+        <div class="col content-area">
+            <div class="content-wrap">
+                {{!-- If member logged in > Access account page --}}
+                {{#if @member}}
+
+                {{!-- If member paid > Show account details --}}
+                {{#if @member.paid}}
+
+                {{#foreach @member.subscriptions}}
+                <div class="member-details">
+                    <dl>
+                        <dt>{{t "E-mail"}}</dt><dd>{{customer.email}}</dd>
+                        <dt>{{t "Plan type:"}}</dt><dd>{{plan.nickname}}</dd>
+                        <dt>{{t "Start date:"}}</dt><dd>{{start_date}}</dd>
+                        <dt>{{t "Status:"}}</dt><dd>{{status}}</dd>
+                        <dt>{{t "Period end:"}}</dt><dd>{{current_period_end}}</dd>
+                    </dl>
+                </div>
+                {{/foreach}}
+
+                {{!-- If free member > Show subscribe plan --}}
+                {{else}}
+
+                {{!-- Insert subscribe plan | partials/plan.hbs --}}
+                {{> plan}}
+
+                {{/if}}
+
+                {{!-- If member not logged > Show error notification --}}
+                {{else}}
+                <div class="notification error">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"></path></svg></div>
+                    <div class="message">
+                        <h4 class="title">{{t "Access denied"}}</h4>
+                        <p class="details">{{t "Please sign in first for access your account"}}</p>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

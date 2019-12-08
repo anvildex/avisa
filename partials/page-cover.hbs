@@ -1,0 +1,19 @@
+{{#if background}}
+{{#contentFor "pagecover"}}
+<style>
+    .background {
+        background-image: url('{{img_url background}}');
+    }
+</style>
+{{/contentFor}}
+<section class="page-cover {{#is "index, home"}}is-home{{else is "page, tag, author, account, subscribe"}}is-page{{else}}is-post{{/is}}">
+    <div class="background"></div>
+    {{!-- Display site title & description on home page, hide for another page --}}
+    {{#is "index, home"}}
+    <div class="content">
+        <h2 class="title">{{@site.title}}</h2>
+        <span class="description">{{@site.description}}</span>
+    </div>
+    {{/is}}
+</section>
+{{/if}}

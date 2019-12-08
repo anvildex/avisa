@@ -1,0 +1,98 @@
+<footer class="footer-area">
+    <div class="container footer-wrap">
+        <div class="row footer-widget">
+            {{!-- Widget Recent posts --}}
+            <div class="col-lg-4 widget">
+                <h5 class="title">{{t "Recent Posts"}}</h5>
+                {{#get "posts" limit="2" order="published_at desc"}}
+                <ul class="details recent-posts">
+                    {{#foreach posts visibility="all"}}
+                    <li class="item">
+                        {{#if feature_image}}
+                        <div class="media">
+                            <a href="{{url}}"><img class="feature_image" src="{{img_url feature_image}}" alt="{{title}}"></a>
+                        </div>
+                        {{/if}}
+                        <div class="content">
+                            <span class="sup">{{date format="DD MMMM, YYYY"}}</span>
+                            <h4 class="name"><a href="{{url}}">{{title}}</a></h4>
+                        </div>
+                    </li>
+                    {{/foreach}}
+                </ul>
+                {{/get}}
+            </div>
+
+            {{!-- Widget Tags Cloud --}}
+            <div class="col-lg-4 widget">
+                <h5 class="title">{{t "Tags Cloud"}}</h5>
+                <div class="details tags-list">
+                    {{#get "tags" limit="all"}}
+                    {{#foreach tags}}<a class="name" href="{{url}}">{{name}}</a>{{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+
+            {{#if @labs.members}}
+            {{!-- Newsletter widget --}}
+            <div class="col-lg-4 widget">
+                <h5 class="title">{{t "Newsletter"}}</h5>
+                <div class="details">
+                    <p>{{t "Get all the latest & greatest posts delivered straight to your inbox"}}</p>
+                    <form class="form-area form-subscribe" data-members-form="signin">
+                        <div class="form-wrap">
+                            <div class="form-field">
+                                <input class="email" type="email" placeholder="{{t "Your email address"}}" required data-members-email>
+                                <button type="submit">
+                                    <span class="button-value">{{t "Subscribe"}}</span>
+                                    <span class="button-process">{{t "Processing..."}}</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-message">
+                            <div class="message-success">
+                                <h4 class="title">{{t "Great!"}}</h4>
+                                <p class="sub">{{t "Check inbox and click the link to confirm your subscribe"}}</p>
+                            </div>
+                            <div class="message-error">
+                                <p class="sub">{{t "Error! Please enter a valid email address!"}}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="footer-bottom">
+            {{!-- Copyright --}}
+            <div class="copyright">
+                <p>&copy; {{t "Copyright"}} {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>.
+                    {{t "Published with"}} <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></p>
+            </div>
+
+            {{!-- Meta links --}}
+            <div class="meta">
+                <ul>
+                    {{#if @site.facebook}}
+                    <li><a href="{{facebook_url}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a></li>
+                    {{/if}}
+                    {{#if @site.twitter}}
+                    <li><a href="{{twitter_url}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a></li>
+                    {{/if}}
+                    <li><a href="{{@site.url}}/rss"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"></path></svg></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{!-- Back to top button --}}
+    <div class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"></path></svg></div>
+</footer>
+
+{{!-- Insert popup | partials/popup.hbs --}}
+{{> popup}}
+
+{{!-- Insert notification | partials/notification.hbs --}}
+{{#if @labs.members}}
+{{> notification}}
+{{/if}}

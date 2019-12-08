@@ -1,0 +1,22 @@
+<div class="post-block post-comments" id="post-comments">
+    <h5 class="title">{{t "Comments"}}</h5>
+    {{!-- START Disqus comment (This block use Disqus, if you want use other platform just remove bellow code) --}}
+    <div id="disqus_thread"></div>
+    <script>
+        if (typeof (disqus_shortname) == 'undefined' || disqus_shortname.length == 0) {
+            document.getElementById('post-comments').style.display = 'none';
+        } else {
+            var disqus_config = function () {
+                this.page.url = "{{url absolute="true"}}";
+                this.page.identifier = "ghost-{{comment_id}}";
+            };
+            (function () {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        }
+    </script>
+    {{!-- END Disqus comment --}}
+</div>

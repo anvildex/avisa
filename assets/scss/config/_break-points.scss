@@ -1,0 +1,13 @@
+$breakpoint-max: (
+    sm: 575.98px,
+    md: 767.98px,
+    lg: 991.98px,
+    xl: 1199.98px
+);
+@mixin screen($keys...){
+    @each $key in $keys { 
+        @media (max-width: map-get($breakpoint-max, $key)){
+            @content
+        } 
+    }
+};

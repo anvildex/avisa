@@ -1,0 +1,85 @@
+{{!-- Popup Search --}}
+<div class="popup-overlay"></div>
+<div class="popup-area search-area">
+    <div class="popup-wrap">
+        <div class="popup-close icon">
+            <svg role="img" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M29.17 16L24 21.17 18.83 16 16 18.83 21.17 24 16 29.17 18.83 32 24 26.83 29.17 32 32 29.17 26.83 24 32 18.83 29.17 16zM24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16z"></path></svg>
+        </div>
+        <div class="form-area form-search">
+            <div class="form-wrap">
+                <p class="sub">{{t "Enter at least 3 characters for search keywords"}}</p>
+                <form class="form-field">
+                    <input class="search-input" type="text" autocomplete="off" placeholder="{{t "Type to search..."}}">
+                </form>
+            </div>
+            <div class="form-message search-result"></div>
+        </div>
+    </div>
+</div>
+
+{{!-- Popup access --}}
+{{#if @labs.members}}
+<div class="popup-overlay"></div>
+<div class="popup-area access-area">
+    <div class="popup-wrap">
+        <div class="popup-close icon">
+            <svg role="img" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M29.17 16L24 21.17 18.83 16 16 18.83 21.17 24 16 29.17 18.83 32 24 26.83 29.17 32 32 29.17 26.83 24 32 18.83 29.17 16zM24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 36c-8.82 0-16-7.18-16-16S15.18 8 24 8s16 7.18 16 16-7.18 16-16 16z"></path></svg>
+        </div>
+        <div class="access-wrap">
+            {{!-- Sign in --}}
+            <form class="form-area form-signin" data-members-form="signin">
+                <div class="form-wrap">
+                    <h4 class="title">{{t "Welcome back!"}}</h4>
+                    <p class="sub">{{t "Sign into your account again for full access"}}</p>
+                    <div class="form-field">
+                        <input class="email" type="email" placeholder="{{t "Your email address"}}" required data-members-email>
+                        <button type="submit">
+                            <span class="button-value">{{t "Send signin link"}}</span>
+                            <span class="button-process">{{t "Processing..."}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-message">
+                    <div class="message-success">
+                        <h4 class="title">{{t "Great!"}}</h4>
+                        <p class="sub">{{t "Check your inbox and click the link to complete signin"}}</p>
+                        <span class="popup-close text">{{t "(Close window)"}}</span>
+                    </div>
+                    <div class="message-error">
+                        <p class="sub">{{t "Error! Please enter a valid email address!"}}</p>
+                    </div>
+                </div>
+                <div class="form-meta">
+                    <p>{{t "Don't have an account yet?"}} <span class="signup-link">{{t "Sign up"}}</span></p>
+                </div>
+            </form>
+            {{!-- Sign up --}}
+            <form class="form-area form-signup" data-members-form="signup">
+                <div class="form-wrap">
+                    <h4 class="title">{{t "Sign up to"}} {{@site.title}}</h4>
+                    <p class="sub">{{@site.description}}</p>
+                    <div class="form-field">
+                        <input class="email" type="email" placeholder="{{t "Your email address"}}" required data-members-email>
+                        <button type="submit">
+                            <span class="button-value">{{t "Continue"}}</span>
+                            <span class="button-process">{{t "Processing..."}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-message">
+                    <div class="message-success">
+                        <h4 class="title">{{t "Great!"}}</h4>
+                        <p class="sub">{{t "Check your inbox and click the link to confirm your subscription"}}</p>
+                        <span class="popup-close text">{{t "(Close window)"}}</span>
+                    </div>
+                    <div class="message-error">
+                        <p class="sub">{{t "Error! Please enter a valid email address!"}}</p>
+                    </div>
+                </div>
+                <p class="form-meta">{{t "Already have an account?"}} <span class="signin-link">{{t "Sign in"}}</span>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{{/if}}

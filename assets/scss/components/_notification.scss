@@ -1,0 +1,89 @@
+.notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: $base-spacing*2;
+    &.float {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+        transform: translateY(-175%);
+        visibility: hidden;
+    }
+    &.success {
+        background-color: $color-success;
+    }
+    &.warning {
+        background-color: $color-warning;
+    }
+    &.error{
+        background-color: $color-error;
+    }
+    .icon {
+        display: flex;
+        justify-content: center;
+        margin: 0 $base-spacing*2;
+        text-align: center;
+        @include screen(sm) {
+            margin: $base-spacing;
+        }
+        svg {
+            width: 48px;
+            height: 48px;
+            fill: $color-light;
+        }
+    }
+    .message {
+        flex: 1;
+        padding: $base-spacing $base-spacing*2;
+        border-left: 2px solid rgba($color: $color-dark, $alpha: .07);
+        @include screen(sm) {
+            padding: $base-spacing;
+        }
+        .title {
+            margin: 0;
+            font-size: $font-size-xl;
+            line-height: $base-spacing*2;
+            color: $color-light;
+        }
+        .details {
+            font-size: $font-size-m;
+            color: rgba($color: $color-light, $alpha: 0.8);
+            margin: 0;
+            a {
+                text-transform: uppercase;
+                color: $color-light;
+            }
+        }
+    }
+}
+.subscribe-success {
+    .subscribe {
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+.signup-success {
+    .signup {
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+.signin-success {
+    .signin {
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+.checkout-success {
+    .checkout {
+        visibility: visible;
+        transform: translateY(0);
+    }
+}

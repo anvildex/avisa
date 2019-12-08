@@ -1,0 +1,40 @@
+{{!< default}}
+{{!-------------------------------------------------------
+# THIS TEMPLATE USING TO RENDER HOME PAGE
+---------------------------------------------------------}}
+
+{{!-- Container width --}}
+{{#contentFor "container"}}container{{/contentFor}}
+
+{{!-- Insert header | partials/header.hbs --}}
+{{> header}}
+
+{{!-- Insert page cover | partials/page-cover.hbs --}}
+{{> page-cover background=@site.cover_image}}
+
+{{!-- Insert page header | page-header/header.hbs --}}
+{{> page-header}}
+
+<div class="{{{block "container"}}} main-wrap">
+    <div class="row">
+        <div class="col-lg-9 content-area">
+            <div class="content-wrap {{#is "index"}}grid-2{{else}}grid-3{{/is}}">
+                {{#foreach posts visibility="all"}}
+                {{!-- The tag below includes the markup for each post - partials/card.hbs --}}
+                {{> card}}
+                {{/foreach}}
+            </div>
+
+            {{!-- Insert pagination | partials/pagination.hbs --}}
+            {{#if pagination}}
+            {{pagination}}
+            {{/if}}
+        </div>
+        <div class="col-lg-3 sidebar-area">
+            <div class="sidebar-wrap">
+                {{!-- Insert sidebar | partials/sidebar.hbs --}}
+                {{> sidebar}}
+            </div>
+        </div>
+    </div>
+</div>

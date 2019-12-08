@@ -1,0 +1,116 @@
+{{!< default}}
+{{!-------------------------------------------------------
+# THIS TEMPLATE USING TO RENDER SINGLE POST, SINGLE PAGE
+---------------------------------------------------------}}
+
+{{!-- Container width --}}
+{{#contentFor "container"}}container{{/contentFor}}
+
+{{!-- Insert Header | partials/header.hbs --}}
+{{> header}}
+
+
+{{#post}}
+{{!-- Insert cover image if post has #cover tag | partials/page-cover.hbs --}}
+{{#has tag="#cover"}}{{> page-cover background=feature_image}}{{/has}}
+
+{{!-- Insert page header | partials/page-header.hbs --}}
+{{> page-header}}
+{{/post}}
+
+<div class="{{{block "container"}}} main-wrap">
+    <div class="row">
+        <div class="col-lg-9 content-area">
+            <div class="content-wrap">
+                {{!# Get data from post --}}
+                {{#post}}
+                <article class="post {{visibility}}-access">
+
+                    {{!-- Show featured image if #cover tag not included --}}
+                    {{#if feature_image}}
+                    {{#has tag="#cover"}}
+                    {{else}}
+                    <div class="post-media">
+                        <img class="feature_image" src="{{img_url feature_image size="lg"}}" alt="{{title}}">
+                    </div>
+                    {{/has}}
+                    {{/if}}
+
+                    {{!-- If user has access > Show full post content --}}
+                    {{#if access}}
+                    <div class="post-content">
+                        {{content}}
+                    </div>
+
+                    {{!-- If user doesn't have access > Hide post, show notification --}}
+                    {{else}}
+                    <div class="notification warning">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M22 30h4v4h-4zm0-16h4v12h-4zm1.99-10C12.94 4 4 12.95 4 24s8.94 20 19.99 20S44 35.05 44 24 35.04 4 23.99 4zM24 40c-8.84 0-16-7.16-16-16S15.16 8 24 8s16 7.16 16 16-7.16 16-16 16z"></path></svg></div>
+                        <div class="message">
+                            <h4 class="title">{{t "You don't have access"}}</h4>
+                            <p class="details">{{t "This post is for"}} <strong>{{#if @member}}{{t "paying subscribers"}}{{else}}{{t "subscribers"}}{{/if}}</strong> {{t "only, please"}} <a class="signin-open" href="javascript:void(0)">{{t "sign in"}}</a> {{t "or"}} <a href="{{@site.url}}/subscribe">{{t "subscribe"}}</a></p>
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    <div class="post-block post-meta">
+                        {{!-- Show all tags of post --}}
+                        {{#if tags}}
+                        <ul class="tags">
+                            {{#foreach tags}}
+                            <li><a href="{{url}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"></path></svg>{{name}}</a></li>
+                            {{/foreach}}
+                        </ul>
+                        {{/if}}
+
+                        {{!-- Quick share (only show on single post) | partials/share.hbs --}}
+                        {{#is "post"}}
+                        {{> share}}
+                        {{/is}}
+                    </div>
+
+                    {{!-- Content inside this tag will be show on single post only --}}
+                    {{#is "post"}}
+
+                    {{!-- Post authors --}}
+                    <div class="post-block post-author">
+                        <h5 class="title">{{t "Written by"}}</h5>
+                        <div class="author-list">
+                            {{#foreach authors}}
+                            <div class="author-item">
+                                <div class="media">
+                                    <a href="{{url}}"><img class="profile_image" src="{{#if profile_image}}{{img_url profile_image size="s"}}{{else}}{{asset "images/no-avatar.png"}}{{/if}}" alt="{{name}}"></a>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name"><a href="{{url}}">{{name}}</a></h3>
+                                    {{#if bio}}<p class="bio">{{bio}}</p>{{/if}}
+                                    <p class="more"><a href="{{url}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"></path></svg>{{t "More about"}} {{name}}</a></p>
+                                </div>
+                            </div>
+                            {{/foreach}}
+                        </div>
+                    </div>
+
+                    {{!-- Insert Post navigation | partials/post-nav.hbs --}}
+                    {{> post-nav}}
+
+                    {{!-- Insert Related posts | partials/post-related.hbs --}}
+                    {{> post-related}}
+
+                    {{!-- Insert Post comments | partials/comments.hbs --}}
+                    {{> comments}}
+
+                    {{/is}}
+
+                </article>
+                {{/post}}
+            </div>
+        </div>
+        <div class="col-lg-3 sidebar-area">
+            <div class="sidebar-wrap">
+                {{!-- Insert sidebar | partials/sidebar.hbs --}}
+                {{> sidebar}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+.popup-opened.popup-search {
+    overflow: hidden;
+        .popup-overlay {
+            display: block;
+        }
+        .popup-area.search-area {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+        }
+}
+.popup-opened.popup-signin {
+    overflow: hidden;
+        .popup-overlay {
+            display: block;
+        }
+        .popup-area.access-area {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+        }
+}
+.popup-opened.popup-signup {
+    overflow: hidden;
+        .popup-overlay {
+            display: block;
+        }
+        .popup-area.access-area {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .form-signin {
+            display: none;
+        }
+        .form-signup {
+            display: block;
+        }
+}
+.popup {
+    &-overlay {
+        display: none;
+        background-color: $background-primary;
+        transition: -1.65s ease-in-out;
+        will-change: opacity;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 888;
+        overflow: hidden;
+        position: fixed;
+    }
+    &-area {
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $background-primary;
+        will-change: opacity;
+        transition: all .3s cubic-bezier(.165,.84,.44,1);
+        transform: scale(1.2);
+    }
+    &-wrap {
+        max-width: $base-spacing*40;
+        margin: 10vh auto;
+        padding: 0 $base-spacing;
+        @include screen(sm) {
+            max-width: auto;
+        }
+    }
+    &-content {}
+    &-close {
+        cursor: pointer;
+        &.text {
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            i {
+                color: $color-error;
+                margin-right: $base-spacing/3;
+            }
+        }
+        &.icon {
+            position: absolute;
+            z-index: 9999;
+            top: $base-spacing;
+            right: $base-spacing;
+            svg {
+                width: 48px;
+                height: 48px;
+                fill: $color-border;
+                &:hover {
+                    fill: $color-error;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{meta_title}}</title>
+
+    {{!-- Publication icon from general settings --}}
+    {{#if @site.icon}}
+    <link rel="icon" href="{{@site.icon}}" type="image/x-icon">
+    {{/if}}
+
+    <link rel="stylesheet" href="{{asset "css/app.css"}}">
+
+    {{!-- This tag outputs stylesheet for page cover section --}}
+    {{{block "pagecover"}}}
+
+    {{!-- This tag outputs SEO meta + structured data and other important settings --}}
+    {{ghost_head}}
+    
+</head>
+<body>
+    <div class="wrapper">
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- Close <main> tag from page-header.hbs --}}
+        </main>
+    </div>
+
+    {{!-- Insert footer | partials/footer.hbs --}}
+    {{> footer}}
+
+    {{!-- Required JavaScript --}}
+    <script>var API_URL = "{{@site.url}}";</script>
+    <script src="{{asset "js/app.js"}}"></script>
+
+    {{!-- Ghost outputs important scripts and data with this tag - It should always be the very last thing before the closing body tag --}}
+    {{ghost_foot}}
+</body>
+</html>

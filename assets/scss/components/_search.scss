@@ -1,0 +1,16 @@
+.search-open {
+    cursor: pointer;
+    width: $base-spacing*2;
+    height: $base-spacing*2;
+    margin: $base-spacing 0;
+    margin-left: $base-spacing*2;
+    padding: $base-spacing/3;
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: $color-faded;
+        &:hover {
+            fill: $color-tertiary;
+        }
+    }
+}

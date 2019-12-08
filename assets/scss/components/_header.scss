@@ -1,0 +1,42 @@
+.header {
+    &-area {
+        position: fixed;
+        top: 0;
+        z-index: 777;
+        width: 100%;
+        height: $base-spacing*4;
+        background-color: $background-secondary;
+        box-shadow: $shadow-primary;
+        transition: top 0.5s;
+    }
+    &-wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-left {
+        flex: 1;
+        display: flex;
+    }
+    &-right {
+        display: flex;
+    }
+}
+.brand {
+    order: 1;
+    margin-right: $base-spacing;
+    @include screen(sm) {
+        order: 2;
+    }
+    &-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-medium;
+        line-height: $base-spacing*4;
+    }
+    &-logo {
+        img {
+            width: auto;
+            height: $base-spacing*2;
+            margin: $base-spacing 0;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<article class="post-card {{visibility}}{{#if @labs.members}}-access{{/if}} {{#is "home"}}{{#if @first}}first{{else}}default{{/if}}{{/is}}">
+    <div class="card-wrap">
+        {{#if featured}}
+        <div class="card-ribbon">
+            <span class="featured"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg></span>
+        </div>
+        {{/if}}
+        {{#if feature_image}}
+        <div class="card-media">
+            <a href="{{url}}"><img class="feature_image" src="{{img_url feature_image size="lg"}}" alt="{{title}}"></a>
+        </div>
+        {{/if}}
+        <div class="card-body">
+            <div class="sup">
+                {{#is "index, home, tag, author"}}{{#if primary_tag}}{{#primary_tag}}<a class="primary_tag" href="{{url}}">{{name}}</a>{{/primary_tag}}{{/if}}{{/is}}
+                <span class="published_at">{{date format="DD MMMM"}}</span>
+            </div>
+            <h2 class="title"><a href="{{url}}">{{title}}</a></h2>
+            {{#is "index, home, tag, author"}}
+            <p class="details">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{#if feature_image}}{{excerpt words="30"}}{{else}}{{excerpt words="50"}}{{/if}}...{{/if}}</p>
+            {{/is}}
+        </div>
+        {{#is "index, home"}}
+        <div class="card-meta">
+            <ul class="author">
+                {{#foreach authors}}
+                <li class="author-image">
+                    <a href="{{url}}"><img class="profile_image" src="{{#if profile_image}}{{img_url profile_image}}{{else}}{{asset "images/no-avatar.png"}}{{/if}}" alt="{{name}}"></a>
+                </li>
+                {{/foreach}}
+                <li class="author-name">{{#has author="count:>2"}}{{t "Multiple authors"}}{{else}}{{authors}}{{/has}}</li>
+            </ul>
+            <a class="pernament-link" href="{{url}}">{{t "Read more..."}}</a>
+        </div>
+        {{/is}}
+    </div>
+</article>
