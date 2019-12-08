@@ -61,7 +61,7 @@ If you have any questions or troubles with this product, please feel free to ope
 
 ## License
 
-Copyright (c) 2019 Anvildex. Released under the MIT License
+Copyright (c) 2019 Anvildex. Released under the [MIT License](https://github.com/anvildex/avisa/blob/master/LICENSE)
 
 ## Credits
 
