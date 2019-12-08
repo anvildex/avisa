@@ -57,11 +57,11 @@ https://ghost.org/docs/members/introduction/
 
 ## Help & support
 
-If you have any questions or troubles with this product, please feel free to open an issue [here](https://github.com/eddiesigner/liebling/issues).
+If you have any questions or troubles with this product, please feel free to open an issue [here](https://github.com/anvildex/avisa/issues).
 
 ## License
 
-Copyright (c) 2019 Anvildex. Released under the [MIT license](https://github.com/eddiesigner/liebling/blob/master/LICENSE).
+Copyright (c) 2019 Anvildex. Released under the MIT License
 
 ## Credits
 
